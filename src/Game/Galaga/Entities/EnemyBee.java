@@ -17,7 +17,9 @@ public class EnemyBee extends BaseEntity {
     public EnemyBee(int x, int y, int width, int height, Handler handler,int row, int col) {
         super(x, y, width, height, Images.galagaEnemyBee[0], handler);
         this.row = row;
+        row = random.nextInt(2)+3;
         this.col = col;
+        col = random.nextInt(8);
         BufferedImage[] idleAnimList= new BufferedImage[2];
         idleAnimList[0] = Images.galagaEnemyBee[0];
         idleAnimList[1] = Images.galagaEnemyBee[1];
@@ -30,11 +32,11 @@ public class EnemyBee extends BaseEntity {
     }
 
     private void spawn() {
-        spawnPos = random.nextInt(4);
+        spawnPos = random.nextInt(3);
         switch (spawnPos){
             case 0://left
                 x = (handler.getWidth()/4)-width;
-                y = random.nextInt(handler.getHeight()-handler.getHeight()/8);
+                y = random.nextInt(handler.getHeight()-handler.getHeight()/8)-40;
                 break;
             case 1://top
                 x = random.nextInt((handler.getWidth()-handler.getWidth()/2))+handler.getWidth()/4;
@@ -42,7 +44,7 @@ public class EnemyBee extends BaseEntity {
                 break;
             case 2://right
                 x = (handler.getWidth()/2)+ width + (handler.getWidth()/4);
-                y = random.nextInt(handler.getHeight()-handler.getHeight()/8);
+                y = random.nextInt(handler.getHeight()-handler.getHeight()/8)-40;
                 break;
             case 3://down
                 x = random.nextInt((handler.getWidth()/2))+handler.getWidth()/4;

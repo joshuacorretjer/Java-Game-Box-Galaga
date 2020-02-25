@@ -53,6 +53,23 @@ public class PlayerShip extends BaseEntity{
                 handler.getGalagaState().entityManager.entities.add(new PlayerLaser(this.x + (width / 2), this.y - 3, width / 5, height / 2, Images.galagaPlayerLaser, handler, handler.getGalagaState().entityManager));
 
             }
+            
+            
+            if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
+                health--;
+                destroyed = true;
+                handler.getMusicHandler().playEffect("explosion.wav");
+                }
+            
+            if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_B)) {
+                health++;
+                }
+            
+            if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
+                handler.getGalagaState().entityManager.entities.add(new EnemyBee(x, y, 32, 32, handler, attackCooldown, attackCooldown));
+                }
+            
+            
             if (handler.getKeyManager().left) {
                 x -= (speed);
             }
