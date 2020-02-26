@@ -68,8 +68,9 @@ public class PlayerShip extends BaseEntity{
             if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
                 handler.getGalagaState().entityManager.entities.add(new EnemyBee(x, y, 32, 32, handler, attackCooldown, attackCooldown));
                 }
-            
-            
+            if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {
+    			handler.getGalagaState().entityManager.entities.add(new EnemyButterfly(x, y, 32, 32, handler, attackCooldown , attackCooldown));
+            }
             if (handler.getKeyManager().left) {
                 x -= (speed);
             }
