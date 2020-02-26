@@ -36,6 +36,12 @@ public class ScoreManager {
 
     public void addGalagaCurrentScore(int galagaCurrentScore) {
         this.galagaCurrentScore += galagaCurrentScore;
+        if(galagaHighScore < getGalagaCurrentScore());
+    		this.galagaHighScore += galagaCurrentScore;
+    }
+    public void addGalagaHighScore(int galagaHichScore) {
+    	this.galagaHighScore += galagaHighScore;
+    	
     }
 
     public void removeGalagaCurrentScore(int galagaCurrentScore) {

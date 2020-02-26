@@ -89,6 +89,11 @@ public class GalagaState extends State {
 
         }
         if (Mode.equals("Stage")) {
+        	g.setColor(Color.RED);
+	        g.setFont(new Font("TimesRoman", Font.PLAIN, 31));
+	        g.drawString("SCORE:",handler.getWidth()-handler.getWidth()/3 - 64,handler.getHeight()/32);
+	        g.drawString(String.valueOf(handler.getScoreManager().getGalagaCurrentScore()),handler.getWidth()- handler.getWidth()/3 + 50,handler.getHeight()/32);
+      
             g.setColor(Color.MAGENTA);
             g.setFont(new Font("TimesRoman", Font.PLAIN, 62));
             g.drawString("HIGH",handler.getWidth()-handler.getWidth()/4,handler.getHeight()/16);

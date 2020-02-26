@@ -53,6 +53,7 @@ public class PlayerShip extends BaseEntity{
                 handler.getGalagaState().entityManager.entities.add(new PlayerLaser(this.x + (width / 2), this.y - 3, width / 5, height / 2, Images.galagaPlayerLaser, handler, handler.getGalagaState().entityManager));
 
             }
+           
             
             
             if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
@@ -73,9 +74,16 @@ public class PlayerShip extends BaseEntity{
             }
             if (handler.getKeyManager().left) {
                 x -= (speed);
+                if(x<=handler.getWidth()/4)
+    				x = handler.getWidth()/4;
+    			{
+    			}
             }
             if (handler.getKeyManager().right) {
                 x += (speed);
+                if (x>=handler.getWidth()/4 + handler.getWidth()/2 - width) {
+    				x = handler.getWidth()/4 + handler.getWidth()/2 - width;
+    			}
             }
 
             bounds.x = x;
