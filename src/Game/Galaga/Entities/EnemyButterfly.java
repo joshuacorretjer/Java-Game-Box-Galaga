@@ -19,9 +19,7 @@ public class EnemyButterfly extends BaseEntity{
     public EnemyButterfly(int x, int y, int width, int height, Handler handler,int row, int col) {
         super(x, y, width, height, Images.galagaEnemyButterfly[0], handler);
         this.row = row;
-        row = random.nextInt(2)+3;
         this.col = col;
-        col = random.nextInt(8);
         BufferedImage[] idleAnimList= new BufferedImage[2];
         idleAnimList[0] = Images.galagaEnemyButterfly[0];
         idleAnimList[1] = Images.galagaEnemyButterfly[1];
@@ -189,6 +187,7 @@ public class EnemyButterfly extends BaseEntity{
             hit=true;
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
+            handler.getGalagaState().entityManager.position[row][col] = false;
         }
     }
 }

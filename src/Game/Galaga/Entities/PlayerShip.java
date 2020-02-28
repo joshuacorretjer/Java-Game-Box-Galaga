@@ -28,6 +28,13 @@ public class PlayerShip extends BaseEntity{
     @Override
     public void tick() {
         super.tick();
+        int SpawnCooldown = 60 * random.nextInt(120);
+		if (SpawnCooldown>0) {
+			SpawnCooldown--;
+		}else {
+			handler.getGalagaState().entityManager.addBee();
+			handler.getGalagaState().entityManager.addButterfly();
+	}
         if (destroyed){
             if (destroyedCoolDown<=0){
                 destroyedCoolDown=60*7;
