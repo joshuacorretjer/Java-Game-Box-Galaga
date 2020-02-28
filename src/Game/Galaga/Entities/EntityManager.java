@@ -11,6 +11,7 @@ public class EntityManager {
 	Random random;
 	int maxBee = 16;
 	int maxShip = 12;
+	int counter1,counter2;
 	boolean avaliable = true;
 	boolean avaliableButterfly = true;
 	public ArrayList<BaseEntity> entities;
@@ -52,12 +53,12 @@ public class EntityManager {
 
 	public void addBee () {
 		avaliable=true;
-		int counter = 0; 
+		int counter1 = 0; 
 		for(BaseEntity entity:entities)
 			if (entity instanceof EnemyBee)
-				counter ++;
+				counter1 ++;
 
-		if(counter == maxBee)
+		if(counter1 == maxBee)
 			avaliable = false;
 		if (avaliable) {
 			while(position[row][col] || row<2) {
@@ -73,11 +74,11 @@ public class EntityManager {
 
 	public void addButterfly() {
 		avaliableButterfly=true;
-		int counter = 0; 
+		int counter2 =0; 
 		for(BaseEntity entity:entities)
 			if (entity instanceof EnemyButterfly)
-				counter ++;
-		if(counter == maxShip)
+				counter2 ++;
+		if(counter2 == maxShip)
 			avaliableButterfly = false;
 		if (avaliableButterfly) {
 			while(position[rowButterfly][colButterfly] || colButterfly > 7) {

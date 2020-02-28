@@ -40,6 +40,7 @@ public class GalagaState extends State {
         if (Mode.equals("Stage")){
         	entityManager.addBee();
 			entityManager.addButterfly();
+			
             if (startCooldown<=0) {
                 entityManager.tick();
             }else{

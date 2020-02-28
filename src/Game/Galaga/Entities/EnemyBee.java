@@ -216,6 +216,8 @@ public class EnemyBee extends BaseEntity {
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
 			handler.getGalagaState().entityManager.position[row][col] = false;
+
+
         }
     }
 }
