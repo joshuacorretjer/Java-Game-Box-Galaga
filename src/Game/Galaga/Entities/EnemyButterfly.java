@@ -9,11 +9,13 @@ import java.awt.image.BufferedImage;
 
 public class EnemyButterfly extends BaseEntity{
 	int row,col;//row 3-4, col 0-7
-    boolean justSpawned=true,attacking=false, positioned=false,hit=false,centered = false;
+	double xPlayer, yPlayer, OGposX, OGposY;
+    boolean justSpawned=true,attacking=false, positioned=false,hit=false,centered=false,goBack;
     Animation idle,turn90Left;
     int spawnPos;//0 is left 1 is top, 2 is right, 3 is bottom
     int formationX,formationY,speed,centerCoolDown=60;
     int timeAlive=0;
+    int waitToAttack=4*60;
     public EnemyButterfly(int x, int y, int width, int height, Handler handler,int row, int col) {
         super(x, y, width, height, Images.galagaEnemyButterfly[0], handler);
         this.row = row;
@@ -148,6 +150,17 @@ public class EnemyButterfly extends BaseEntity{
                 }
             }
         }else if (positioned){
+        	if(waitToAttack>0){
+        		waitToAttack--;
+        		
+        	}else {
+        		attacking = true;
+        		positioned = false;
+        		waitToAttack = 4*60;
+        		OGposX=this.x; OGposY=this.y;
+        		xPlayer=handler.getGalagaState().entityManager.playerShip.x;
+        		yPlayer=handler.getGalagaState().entityManager.playerShip.y;
+        	}
 
         }else if (attacking){
 

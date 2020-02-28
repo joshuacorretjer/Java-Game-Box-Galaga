@@ -9,11 +9,13 @@ import java.awt.image.BufferedImage;
 
 public class EnemyBee extends BaseEntity {
     int row,col;//row 3-4, col 0-7
-    boolean justSpawned=true,attacking=false, positioned=false,hit=false,centered = false;
+    double xPlayer, yPlayer, OGposX, OGposY;
+    boolean justSpawned=true,attacking=false, positioned=false,hit=false,centered=false,goBack=false;
     Animation idle,turn90Left;
     int spawnPos;//0 is left 1 is top, 2 is right, 3 is bottom
     int formationX,formationY,speed,centerCoolDown=60;
     int timeAlive=0;
+    int waitToAttack=10*60;
     public EnemyBee(int x, int y, int width, int height, Handler handler,int row, int col) {
         super(x, y, width, height, Images.galagaEnemyBee[0], handler);
         this.row = row;
@@ -148,9 +150,48 @@ public class EnemyBee extends BaseEntity {
                 }
             }
         }else if (positioned){
+        	if(waitToAttack>0){
+        		waitToAttack--;
+        		
+        	}else {
+        		attacking = true;
+        		positioned = false;
+        		waitToAttack = 10*60;
+        		OGposX=this.x; OGposY=this.y;
+        		xPlayer=handler.getGalagaState().entityManager.playerShip.x;
+        		yPlayer=handler.getGalagaState().entityManager.playerShip.y;
+        	}
 
         }else if (attacking){
-
+        	if(y<yPlayer) {
+        		y++;
+        	}
+        	if(x<xPlayer) {
+        		x++;
+        	}
+        	if(x>xPlayer) {
+        		x--;
+        	}
+        	
+        	if(y==yPlayer && x==xPlayer) {
+        		attacking=false;
+        		goBack=true;
+        	}
+        } else if(goBack) {
+        	if(y>OGposY) {
+        		y--;
+        	}
+        	if(x<OGposX) {
+        		x++;
+        	}
+        	if(x>OGposX) {
+        		x--;
+        	}
+        	
+        	if(x==OGposX && y==OGposY) {
+        		goBack=false;
+        		positioned=true;
+        	}
         }
         bounds.x=x;
         bounds.y=y;
