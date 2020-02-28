@@ -215,6 +215,7 @@ public class EnemyBee extends BaseEntity {
             hit=true;
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
+			handler.getScoreManager().addGalagaCurrentScore(100);
 			handler.getGalagaState().entityManager.position[row][col] = false;
 
 

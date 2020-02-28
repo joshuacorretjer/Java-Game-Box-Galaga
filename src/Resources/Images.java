@@ -27,7 +27,7 @@ public class Images {
     public static BufferedImage[] galagaEnemyDeath;
     public static BufferedImage[] galagaEnemyBee;
     public static BufferedImage[] galagaEnemyButterfly; 
-
+    public static BufferedImage galagaEnemyLaser;
     public static BufferedImage galagaImageSheet;
     public SpriteSheet galagaSpriteSheet;
 
@@ -108,6 +108,7 @@ public class Images {
             galagaEnemyButterfly[0] = galagaSpriteSheet.crop(188,155,9,10);
             galagaEnemyButterfly[1] = galagaSpriteSheet.crop(162, 155, 13, 10);
             galagaPlayerLaser = galagaSpriteSheet.crop(365 ,219,3,8);
+            galagaEnemyLaser = galagaSpriteSheet.crop(374, 50, 3, 8);
 
 
 

@@ -155,13 +155,15 @@ public class EnemyButterfly extends BaseEntity{
         		attacking = true;
         		positioned = false;
         		waitToAttack = 4*60;
-        		OGposX=this.x; OGposY=this.y;
         		xPlayer=handler.getGalagaState().entityManager.playerShip.x;
         		yPlayer=handler.getGalagaState().entityManager.playerShip.y;
+
         	}
 
         }else if (attacking){
-
+//    		if(this.x==x) {
+//                handler.getGalagaState().entityManager.entities.add(new EnemyLaser(this.x + (width / 2), this.y - 3, width / 5, height / 2, Images.galagaEnemyLaser, handler.getGalagaState().entityManager));
+//    		}
         }
         bounds.x=x;
         bounds.y=y;
@@ -187,6 +189,7 @@ public class EnemyButterfly extends BaseEntity{
             hit=true;
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
+			handler.getScoreManager().addGalagaCurrentScore(100);
             handler.getGalagaState().entityManager.position[row][col] = false;
         }
     }

@@ -20,6 +20,7 @@ public class ScoreManager {
 
     public int getGalagaHighScore() {
         return galagaHighScore;
+       
     }
 
     public void setGalagaHighScore(int galagaHighScore) {
@@ -28,21 +29,25 @@ public class ScoreManager {
 
     public int getGalagaCurrentScore() {
         return galagaCurrentScore;
+        
     }
 
     public void setGalagaCurrentScore(int galagaCurrentScore) {
         this.galagaCurrentScore = galagaCurrentScore;
-    }
+        
+        }
+    
 
     public void addGalagaCurrentScore(int galagaCurrentScore) {
         this.galagaCurrentScore += galagaCurrentScore;
         if(galagaHighScore < getGalagaCurrentScore());
-    		this.galagaHighScore += galagaCurrentScore;
+    	this.galagaHighScore += galagaCurrentScore;
     }
     public void addGalagaHighScore(int galagaHichScore) {
     	this.galagaHighScore += galagaHighScore;
     	
     }
+    
 
     public void removeGalagaCurrentScore(int galagaCurrentScore) {
         this.galagaCurrentScore -= galagaCurrentScore;
