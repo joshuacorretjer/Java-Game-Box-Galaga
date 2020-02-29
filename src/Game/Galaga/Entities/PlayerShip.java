@@ -28,6 +28,11 @@ public class PlayerShip extends BaseEntity{
     @Override
     public void tick() {
         super.tick();
+
+        if(handler.getScoreManager().getGalagaCurrentScore()==1000) {
+            handler.getMusicHandler().playEffect("OnaRool.wav");
+            handler.getScoreManager().addGalagaCurrentScore(100);
+        }
         int SpawnCooldown = 60 * (random.nextInt(20) + 100);
 		if (SpawnCooldown>0) {
 			SpawnCooldown--;

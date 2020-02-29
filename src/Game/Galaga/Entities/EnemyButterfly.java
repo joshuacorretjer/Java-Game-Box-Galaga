@@ -155,15 +155,21 @@ public class EnemyButterfly extends BaseEntity{
         	if(waitToAttack>0) {
         		waitToAttack--;
         	}else {
-        		handler.getGalagaState().entityManager.toadd.add(new EnemyLaser(this.x ,this.y , 16 ,32 , Images.galagaEnemyLaser,handler,handler.getGalagaState().entityManager));
-        		waitToAttack = random.nextInt(10)*60;
-                handler.getMusicHandler().playEffect("laser.wav");
+        		 if(handler.getScoreManager().getGalagaCurrentScore()>=1000) {
+            		handler.getGalagaState().entityManager.toadd.add(new EnemyLaser(this.x ,this.y , 32 ,64 , Images.galagaEnemyLaser,handler,handler.getGalagaState().entityManager));
+            		waitToAttack = random.nextInt(10)*60;
+            		handler.getMusicHandler().playEffect("laser.wav");
+        		 }else{
+        			 handler.getGalagaState().entityManager.toadd.add(new EnemyLaser(this.x ,this.y , 16 ,32 , Images.galagaEnemyLaser,handler,handler.getGalagaState().entityManager));       		 
+        			 waitToAttack = random.nextInt(10)*60;
+        			 handler.getMusicHandler().playEffect("laser.wav");
+        }
         }
         }
         bounds.x=x;
         bounds.y=y;
+    
     }
-
     @Override
     public void render(Graphics g) {
         ((Graphics2D)g).draw(new Rectangle(formationX,formationY,32,32));

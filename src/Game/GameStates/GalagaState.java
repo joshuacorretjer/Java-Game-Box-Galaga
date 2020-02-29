@@ -31,6 +31,9 @@ public class GalagaState extends State {
 
     @Override
     public void tick() {
+    	
+
+    	
      	if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
     		entityManager.addBee();
     	}		
