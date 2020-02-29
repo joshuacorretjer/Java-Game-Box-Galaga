@@ -33,7 +33,7 @@ public class PlayerShip extends BaseEntity{
             handler.getMusicHandler().playEffect("OnaRool.wav");
             handler.getScoreManager().addGalagaCurrentScore(100);
         }
-        int SpawnCooldown = 60 * (random.nextInt(20) + 100);
+        int SpawnCooldown = 60 * random.nextInt(100);
 		if (SpawnCooldown>0) {
 			SpawnCooldown--;
 		}else {

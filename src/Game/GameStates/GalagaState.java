@@ -31,22 +31,20 @@ public class GalagaState extends State {
 
     @Override
     public void tick() {
-    	
-
-    	
-     	if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
-    		entityManager.addBee();
-    	}		
-    	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {
-    		entityManager.addButterfly();
-		}
         if (Mode.equals("Stage")){
-        	entityManager.addBee();
-			entityManager.addButterfly();
+         	if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
+        		entityManager.addBee();
+        	}		
+        	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {
+        		entityManager.addButterfly();
+    		}
+        	
 			
             if (startCooldown<=0) {
                 entityManager.tick();
             }else{
+            	entityManager.addBee();
+    			entityManager.addButterfly();
                 startCooldown--;
             }
         }else{
