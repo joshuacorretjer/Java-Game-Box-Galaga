@@ -15,11 +15,13 @@ public class EntityManager {
 	boolean avaliable = true;
 	boolean avaliableButterfly = true;
 	public ArrayList<BaseEntity> entities;
+	public ArrayList<BaseEntity> toadd;
 	public PlayerShip playerShip;
 	public int row=0,col=0,rowButterfly = 0, colButterfly = 1;
 	public boolean[][] position = new boolean[4][8];
 	public EntityManager(PlayerShip playerShip) {
 		random = new Random();
+		toadd = new ArrayList<>();
 		entities = new ArrayList<>();
 		this.playerShip = playerShip;
 	}
@@ -40,8 +42,12 @@ public class EntityManager {
 		for (BaseEntity toErase:toRemove){
 			entities.remove(toErase);
 		}
-
+		for(BaseEntity 	Add : toadd) {
+			entities.add(Add);	
+		}
+		toadd.clear();
 	}
+	
 
 	public void render(Graphics g){
 		for (BaseEntity entity: entities){

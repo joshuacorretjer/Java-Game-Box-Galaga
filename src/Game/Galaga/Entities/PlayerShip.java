@@ -28,7 +28,7 @@ public class PlayerShip extends BaseEntity{
     @Override
     public void tick() {
         super.tick();
-        int SpawnCooldown = 60 * random.nextInt(120);
+        int SpawnCooldown = 60 * (random.nextInt(20) + 100);
 		if (SpawnCooldown>0) {
 			SpawnCooldown--;
 		}else {

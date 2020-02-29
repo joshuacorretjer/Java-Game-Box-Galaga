@@ -9,13 +9,12 @@ import java.awt.image.BufferedImage;
 
 public class EnemyButterfly extends BaseEntity{
 	int row,col;//row 3-4, col 0-7
-	double xPlayer, yPlayer, OGposX, OGposY;
     boolean justSpawned=true,attacking=false, positioned=false,hit=false,centered=false,goBack;
     Animation idle,turn90Left;
     int spawnPos;//0 is left 1 is top, 2 is right, 3 is bottom
     int formationX,formationY,speed,centerCoolDown=60;
     int timeAlive=0;
-    int waitToAttack=4*60;
+    int waitToAttack=random.nextInt(6)*60;
     public EnemyButterfly(int x, int y, int width, int height, Handler handler,int row, int col) {
         super(x, y, width, height, Images.galagaEnemyButterfly[0], handler);
         this.row = row;
@@ -148,22 +147,18 @@ public class EnemyButterfly extends BaseEntity{
                 }
             }
         }else if (positioned){
-        	if(waitToAttack>0){
-        		waitToAttack--;
-        		
-        	}else {
-        		attacking = true;
-        		positioned = false;
-        		waitToAttack = 4*60;
-        		xPlayer=handler.getGalagaState().entityManager.playerShip.x;
-        		yPlayer=handler.getGalagaState().entityManager.playerShip.y;
-
-        	}
-
+        
+        	attacking = true;
+        	positioned = false;	
+        	
         }else if (attacking){
-//    		if(this.x==x) {
-//                handler.getGalagaState().entityManager.entities.add(new EnemyLaser(this.x + (width / 2), this.y - 3, width / 5, height / 2, Images.galagaEnemyLaser, handler.getGalagaState().entityManager));
-//    		}
+        	if(waitToAttack>0) {
+        		waitToAttack--;
+        	}else {
+        		handler.getGalagaState().entityManager.toadd.add(new EnemyLaser(this.x ,this.y , 16 ,32 , Images.galagaEnemyLaser,handler,handler.getGalagaState().entityManager));
+        		waitToAttack = random.nextInt(10)*60;
+                handler.getMusicHandler().playEffect("laser.wav");
+        }
         }
         bounds.x=x;
         bounds.y=y;
